@@ -1,1 +1,15 @@
-
+version: '2'
+services:
+  webhooktohugo:
+    build: .
+    command: /usr/bin/python3 /webhook.py
+    environment:
+      - SRC_IP= # Source IP
+      - MYCALL= # Your Callsign
+      - SUSCALL= # Suspcious Callsign
+      - GITHUB_TOKEN= # Github Token
+      - REPO_NAME= # Github Repo Name
+      - POST_FILE= # Path to post to update
+    ports:
+      - 8090:8090
+    restart: unless-stopped

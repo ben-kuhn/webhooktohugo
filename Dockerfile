@@ -17,7 +17,7 @@ RUN yes | pip install webhook_listener
 COPY docker/webhook.py /webhook.py
 
 # Define default command
-CMD python3 /webhook.py
+CMD /usr/bin/python3 /webhook.py
 
 # Expose Ports
 EXPOSE 8090
