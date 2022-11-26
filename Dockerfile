@@ -5,7 +5,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade && 
     DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common locales
 
 # Install needed packages
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor cron python3 python3-pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python3 python3-pip python3-github
 
 # Update PIP
 RUN yes | pip install --upgrade pip
@@ -20,4 +20,4 @@ COPY docker/webhook.py /webhook.py
 CMD python3 /webhook.py
 
 # Expose Ports
-Expose 8090
+EXPOSE 8090
