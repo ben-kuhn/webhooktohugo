@@ -79,21 +79,27 @@ def process_post_request(request, *args, **kwargs):
         try:
             # Set up Github connection
             g = github.Github(os.environ["GITHUB_TOKEN"])
-
+        except:
+            print("Invalid Github Token")
+        try:
             # Connect to the repo
             repo = g.get_repo(os.environ["REPO_NAME"])
-
+        except:
+            print("Error connecting to the Repo")
+        try:
             # Grab the previous post
             contents = repo.get_contents(os.environ["POST_FILE"], ref="main")
             origpost = contents.decoded_content.decode()
-
+        except:
+            print("Error getting previous post")
+        try:
             # Now we can append our message to our Hugo post.
             newpost = origpost + "\n\n" + messagetext
 
             # And commit the new post
             repo.update_file(contents.path, "Adding a message to the post", newpost, contents.sha, branch="main")
         except:
-            print("Unable to publish the post.  Please verify your environment variables are correct.")
+            print("Unable to publish the post.")
 
     return
 

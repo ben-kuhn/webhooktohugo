@@ -16,6 +16,8 @@ RUN yes | pip install webhook_listener
 # Pull in the webhook listener
 COPY docker/webhook.py /webhook.py
 
+RUN chmod +x /webhook.py
+
 # Force Python STDOUT and STDERR to be unbuffered
 ENV PYTHONUNBUFFERED=1
 
@@ -23,4 +25,4 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 8090
 
 # Define default command
-CMD /usr/bin/python3 /webhook.py
+CMD /webhook.py

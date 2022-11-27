@@ -2,7 +2,7 @@ version: '2'
 services:
   webhooktohugo:
     build: .
-    command: /usr/bin/python3 /webhook.py
+    tty: true
     environment:
       - SRC_IP= # Source IP
       - MYCALL= # Your Callsign
