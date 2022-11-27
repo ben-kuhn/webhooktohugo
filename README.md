@@ -1,6 +1,5 @@
 # webhooktohugo
 
-TL/DR:
 A Python script that accepts a webhook as input, does some processing, and writes/commits the message to a file in a Github repo.
 Once the file in Github is updated, a CI/CD script publishes the updated Hugo page.
 
