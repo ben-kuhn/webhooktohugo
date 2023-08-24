@@ -24,5 +24,11 @@ ENV PYTHONUNBUFFERED=1
 # Expose Ports
 EXPOSE 8090
 
+# Create a user
+RUN groupadd -g 2000 whuser \
+&& useradd -m -u 2000 -g whuser whuser
+
+USER whuser
+
 # Define default command
 CMD /webhook.py
